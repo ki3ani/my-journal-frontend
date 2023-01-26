@@ -1,3 +1,3 @@
 # my-journal
 
-An App for Recroding your lifetime events seamlessy
+This is a journal app that simplifies note-taking 
