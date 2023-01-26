@@ -17,6 +17,7 @@ import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
     useEffect(() => {
 
       let getNote = async () => {
+        if (id === 'new') return
         let response = await fetch(`http://localhost:8000/notes/${id}`)
         let data = await response.json()
         setNote(data)
@@ -27,12 +28,16 @@ import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
 
   
   let handleSubmit = () => {
+    if(id !== 'new' && !note.body){
+      deleteNote()
+    } else if (id !== 'new') {
     updateNote()
+    }
+    else if (id === 'new' && note !== null) {
+      createNote()
+    }
     history.push('/')
-
   }
-
-
 
 
 
@@ -49,6 +54,30 @@ import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
     })
   }
 
+  let deleteNote = async () => {
+    await fetch(`http://localhost:8000/notes/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(note)
+    })
+    history.push('/')
+  }
+
+let createNote = async () => {
+  await fetch(`http://localhost:8000/notes`, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify({...note, 'created': new Date()})
+  })
+}
+
+
+
+
 
 
   return (
@@ -59,6 +88,14 @@ import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
                     <ArrowLeft onClick={handleSubmit} />
                 </Link>
             </h3>
+
+            {id !== 'new' ? (
+              <button onClick={deleteNote}>Delete</button>
+            ) : (
+              <button onClick={handleSubmit}>Done</button>
+            )
+          }
+
             </div>
         
         <textarea onChange={(e) => setNote({

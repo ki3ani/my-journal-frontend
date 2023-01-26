@@ -1,19 +1,16 @@
 {
   "notes": [
     {
+      "body": "Hi name is ken\n\n",
+      "created": "2023-01-26T13:01:36.875Z",
       "id": 1,
-      "body": "Todays Agenda\n\n- Walk Dog\n- Feed fish\n- Play basketball\n- Eat a salad\n-eat some pizza",
-      "updated": "2023-01-26T10:34:03.335Z"
+      "updated": "2023-01-26T13:11:09.594Z"
     },
     {
+      "body": "hey gurl",
+      "created": "2023-01-26T13:06:56.280Z",
       "id": 2,
-      "body": "Bob from bar down the \n\n- Take out trash\n- Eat food",
-      "updated": "2021-07-13T20:43:18.550058Z"
-    },
-    {
-      "id": 3,
-      "body": "-Wash car\n-Buy some kicks",
-      "updated": "2023-01-26T10:33:49.633Z"
+      "updated": "2023-01-26T13:07:07.508Z"
     }
   ]
 }
