@@ -1,7 +1,8 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 import notes from '../assets/data'
 import { useParams } from 'react-router-dom';
+import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
 
 
 
@@ -9,8 +10,17 @@ import { useParams } from 'react-router-dom';
     const {id} = useParams();
     const note = notes.find(note => note.id===Number(id))
   return (
-    <div>
-        <h1>{note?.body}</h1>
+    <div className='note'>
+        <div className='note-header'>
+            <h3>
+                <Link to='/'>
+                    <ArrowLeft />
+                </Link>
+            </h3>
+            </div>
+        
+        <textarea value={note?.body}>
+        </textarea>
     </div>
   )
 }
