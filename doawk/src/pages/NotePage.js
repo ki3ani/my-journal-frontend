@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
     const note = notes.find(note => note.id===Number(id))
   return (
     <div>
-        <h1>{note.body}</h1>
+        <h1>{note?.body}</h1>
     </div>
   )
 }
