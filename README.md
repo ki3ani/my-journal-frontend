@@ -1,3 +1,3 @@
 # my-journal
 
-This is a journal app that simplifies note-taking 
+This is a frontend journal app that simplifies note-taking 
