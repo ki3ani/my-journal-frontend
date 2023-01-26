@@ -1,3 +1,9 @@
+import{
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
+
 import './App.css';
 import Header from './components/Header';
 import NotePage from './pages/NotePage';
@@ -7,11 +13,15 @@ import NotesListPage from './pages/NotesListPage';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      < NotesListPage />
-      <NotePage />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<NotesListPage />} />
+          <Route path="/note/:id" element={<NotePage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

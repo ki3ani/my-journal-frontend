@@ -1,13 +1,26 @@
-import React from "react";
+import React from 'react'
 
-const NotePage = () => {
+import notes from '../assets/data'
+import { useParams } from 'react-router-dom';
 
-    return (
-        <div>
-            <h1>Notes</h1>
-        </div>
-    )
+
+
+ const NotePage = () => {
+    const {id} = useParams();
+    const note = notes.find(note => note.id===Number(id))
+  return (
+    <div>
+        <h1>{note.body}</h1>
+    </div>
+  )
 }
 
 export default NotePage;
+
+
+
+
+
+
+
 
