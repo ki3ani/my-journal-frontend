@@ -11,6 +11,13 @@ let getDate = (note) => {
     return date.toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric'})
 }
 
+let getContent = (note) => {
+    let title = getTitle(note)
+    let content = note.body.substring(title.length, note.body.length)
+    return content.length > 45 ? content.substring(0, 45) + '...' : content
+}
+
+
 
 
 
@@ -19,7 +26,7 @@ const ListItem = ({note}) => {
         <Link to={`/note/${note.id}`}>
             <div className="notes-list-item">
             <h2>{getTitle(note)}</h2>
-            <p><span>{getDate(note)}</span></p>
+            <p><span>{getDate(note)}</span>{getContent(note)}</p>
             </div>
         </Link>
     )
