@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 //import notes from '../assets/data'
 import { useParams } from 'react-router-dom';
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
-
+import { useNavigate } from 'react-router-dom';
 
 
  const NotePage = ({history}) => {
@@ -13,12 +13,12 @@ import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
   
 
     // the function should be wrapped in a useEffect hook to prevent ESlint error
-    //working with a dummy server/api
+    //working on the real server/api
     useEffect(() => {
 
       let getNote = async () => {
         if (id === 'new') return
-        let response = await fetch(`http://localhost:8000/notes/${id}`)
+        let response = await fetch(`http://127.0.0.1:8000/api/notes/${id}`)
         let data = await response.json()
         setNote(data)
       }
@@ -45,7 +45,7 @@ import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
   
   //update the note
   let updateNote = async () => {
-    await fetch(`http://localhost:8000/notes/${id}`, {
+    await fetch(`http://127.0.0.1:8000/api/notes/${id}/update/`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
@@ -55,7 +55,7 @@ import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
   }
 
   let deleteNote = async () => {
-    await fetch(`http://localhost:8000/notes/${id}`, {
+    await fetch(`http://127.0.0.1:8000/api/notes/${id}/delete`, {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json'
@@ -66,7 +66,7 @@ import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
   }
 
 let createNote = async () => {
-  await fetch(`http://localhost:8000/notes`, {
+  await fetch(``, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
