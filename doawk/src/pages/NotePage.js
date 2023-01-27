@@ -7,7 +7,14 @@ import { useNavigate } from 'react-router-dom';
 
 
  const NotePage = ({history}) => {
+    //get the id from the url 
     const {id} = useParams();
+
+    //a better way to navigate to a different page
+    const navigate = useNavigate()
+
+
+
     //const note = notes.find(note => note.id===Number(id))
     const [note, setNote] = useState(null)
   
@@ -36,7 +43,7 @@ import { useNavigate } from 'react-router-dom';
     else if (id === 'new' && note !== null) {
       createNote()
     }
-    history.push('/')
+    navigate('/')
   }
 
 
@@ -54,6 +61,7 @@ import { useNavigate } from 'react-router-dom';
     })
   }
 
+  //delete the note
   let deleteNote = async () => {
     await fetch(`http://127.0.0.1:8000/api/notes/${id}/delete`, {
       method: 'DELETE',
@@ -62,9 +70,11 @@ import { useNavigate } from 'react-router-dom';
       },
       body: JSON.stringify(note)
     })
-    history.push('/')
+    navigate('/')
   }
 
+
+//create a new note  
 let createNote = async () => {
   await fetch(``, {
     method: 'POST',
